@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Динамические изменения на странице</title>
+</head>
+<body>
+  <div id="app">
+    <header id="header">
+      <h1>Изучаем DOM</h1>
+      <p>Работа с элементами страницы</p>
+    </header>
+    <main id="main">
+      <section id="content">
+        <h2>Детали</h2>
+        <p>На этой странице будут отображаться динамические элементы.</p>
+      </section>
+    </main>
+    <footer id="footer">
+      <p>&copy; 2024 Учебный проект</p>
+      <p>Контактная информация: contact@sample.com</p>
+    </footer>
+  </div>
+</body>
+<script>
+    const ul = document.createElement("ul");
+    const items = ["Введение в DOM", "Создание элементов", "Изменение атрибутов"];
+       items.forEach((text) => {
+       const li = document.createElement("li");
+       li.textContent = text;
+       ul.appendChild(li);
+       });
+    const infoSection = document.getElementById("info");
+       if (infoSection) {
+           infoSection.appendChild(ul);  
+       }
+    
+    const link = document.createElement("a");
+    link.textContent = "Мой профиль в LinkedIn";
+    link.href = "https://www.linkedin.com/in/ilias-nysanbek-a12a9430b/"; 
+    link.target = "_blank";
+    const header = document.getElementById("header");
+      if (header) {
+        header.appendChild(link);
+      }
+
+
+    const dynamicSection = document.createElement("section");
+    dynamicSection.className = "dynamic";
+    const dynamicHeading = document.createElement("h2");
+    dynamicHeading.textContent = "Обучение JavaScript";
+    dynamicSection.appendChild(dynamicHeading);
+    const dynamicParagraph = document.createElement("p");
+    dynamicParagraph.textContent =
+       "Динамическое создание элементов позволяет улучшить интерфейс пользователя";
+    dynamicSection.appendChild(dynamicParagraph);
+    const main = document.getElementById("main");
+       if (main) {
+         main.prepend(dynamicSection);
+       }
+    
+    if (infoSection) {
+       const firstParagraph = infoSection.querySelector("p");
+       if (firstParagraph) {
+         infoSection.removeChild(firstParagraph);
+       }
+    }
+
+    const footer = document.getElementById("footer");
+       if (footer) {
+         footer.innerHTML = "";
+       }
+
+
+</script>
+</html>
